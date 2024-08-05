@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:islami/provider/myprovider.dart';
+import 'package:islami/theme/my_theme_data.dart';
+import 'package:provider/provider.dart';
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
 
@@ -20,6 +23,8 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Myprovider>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -30,9 +35,12 @@ class _SebhaTabState extends State<SebhaTab> {
             Padding(
               padding: const EdgeInsets.only(left: 40.0),
               child: Image.asset(
-                'assets/images/head_sebha_logo.png',
+                provider.mode == ThemeMode.light
+                ?'assets/images/head_sebha_logo.png'
+                :'assets/images/head_sebha_dark.png',
                 height: 105,
               ),
+
             ),
             Padding(
               padding: const EdgeInsets.only(top: 80.0),
@@ -43,7 +51,9 @@ class _SebhaTabState extends State<SebhaTab> {
                     OnTap();
                   },
                   child: Image.asset(
-                    'assets/images/body_sebha_logo.png',
+                    provider.mode == ThemeMode.light
+                    ?'assets/images/body_sebha_logo.png'
+                    :'assets/images/body_sebha_dark.png',
                     height: 234,
                   ),
                 ),
@@ -54,7 +64,7 @@ class _SebhaTabState extends State<SebhaTab> {
         Padding(
           padding: const EdgeInsets.only(top: 27.0),
           child: Text(
-            'عدد التسبيحات',
+            'number_of_praises'.tr(),
             textAlign: TextAlign.center,
           ),
         ),
@@ -66,7 +76,7 @@ class _SebhaTabState extends State<SebhaTab> {
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(30)),
-              child: Text('$counter'),
+              child: Text('$counter',style: TextStyle(color: Colors.black),),
             ),
           ),
         ),
@@ -78,7 +88,7 @@ class _SebhaTabState extends State<SebhaTab> {
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(30)),
-              child: Text('${Azkar[index]}'),
+              child: Text('${Azkar[index]}',style: TextStyle(color: Colors.black),),
             ),
           ),
         ),

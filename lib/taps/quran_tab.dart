@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/models/sura_model.dart';
@@ -299,7 +300,7 @@ class _QuranTabState extends State<QuranTab> {
                         width: 1,
                       )),
                   child: Text(
-                    'Verse Number',
+                    'verse_number'.tr(),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
@@ -314,7 +315,7 @@ class _QuranTabState extends State<QuranTab> {
                         color: yallowColor,
                       )),
                   child: Text(
-                    'Sura Name',
+                    'sura_name'.tr(),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
